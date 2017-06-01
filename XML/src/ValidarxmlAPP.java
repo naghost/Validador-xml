@@ -10,43 +10,63 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 public class ValidarxmlAPP {
-	int contadorcerradas = 0;
-	int contadorabiertas = 0;
+	
 	public static void main(String[] args) {
 		Scanner sc;
 		SAXBuilder builder = new SAXBuilder();
 		File xml = new File("C:/Users/Migue/Desktop/tutoriales.xml");
 		boolean atributo = false;
-	
+		int contadorcerradas = 0;
+		int contadorabiertas = 0;
 		int tipo;
+		
 	    if(xml.exists()){
 			try {
 				Document document = (Document) builder.build(xml);		
 				System.out.println("El archivo es valido");
+				System.out.println("Holita");
 				
 			} catch (JDOMException e) {
 				System.out.println("El archivo no es valido por los siguientes motivos:");
 				try {
 					sc = new Scanner(xml);
+					
 						while(sc.hasNext()){
 							String linea = sc.nextLine(); 
-							System.out.println(linea);
+							
 								if(linea.equals("﻿")){
 									System.out.println("Su documento esta vacio");
 								}else{
 								tipo = detectarTipo(linea);
-									switch(tipo){
+									System.out.println(tipo);
+								switch(tipo){
 									case 1:
+										System.out.println("Entro");
+										/*Etiqueta abierta*/
+										/*Necesitamos detectar los atributos*/
+										detectarAtributos(linea);
+										contadorabiertas++;
 										break;
 									case 2:
+										/*Etiqueta cerrada*/
+										contadorcerradas++;								
 										break;
 									case 3:
+										/*Abierta cerrada*/
+										/*Necesitamos detectar atributos*/
 										break;
 									case 4:
+										/*Abierta cerrada en la misma linea*/
+										/*Necesitamos detectar los atributos*/
 										break;
 									}
 								}
+								sc.close();
 							}
+						
+						if(contadorabiertas != contadorcerradas){
+							System.out.println("Tienes etiquetas mal formadas");
+						}
 				
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
@@ -101,13 +121,13 @@ public class ValidarxmlAPP {
 	private static boolean detectarAtributos(String linea) {
 		boolean atributo = false;
 		
-		String subatrib = linea.substring(0, linea.indexOf(">"));
+		
+		System.out.println("entro");
 		if(linea.indexOf(" ") > 0){/*Atributos*/
-		String[] atributos=	subatrib.split(" ");
+		String[] atributos=	linea.split(" ");
 		
 		
-		
-		if(atributos.length != 0){
+		if(atributos.length > 0){
 			for(int i =1 ; i<atributos.length;i++){
 				int j =atributos[i].indexOf("=");
 				int j2 = atributos[i].indexOf("=");
@@ -115,8 +135,8 @@ public class ValidarxmlAPP {
 				int x= atributos[i].indexOf('"',v + 1);
 				int f= atributos[i].indexOf('"',x+1);
 				
-				if(j>0 && v >0 && x>0 && f<0){
-					
+				if(j>0 && v>0 && x>0 && f<0){
+			System.out.println("Holi");
 				}else{
 					System.out.println("atributo mal formado");
 						return false;
