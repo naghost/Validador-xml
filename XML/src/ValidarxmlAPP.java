@@ -48,23 +48,24 @@ public class ValidarxmlAPP {
 							System.out.println("\n"+linea);
 							//guardamos en una variable la linea y la mostramos
 								if(linea.equals("ï»¿")){
-									//Estrañamente al abrir el archivo siempre me ha salido ese conjunto de simbolo
+									//Estraï¿½amente al abrir el archivo siempre me ha salido ese conjunto de simbolo
 									//si solo aparece ese conjunto de simbolos mostraremos el siguiente mensaje:
 									System.out.println("Su documento esta vacio");
 								}else{
 									//usamos un metodo para detectar el tipo de etiqueta que puede ser en este caso son 4 tipos
 								tipo = detectarTipo(linea);
-									switch(tipo){
+									System.out.println(tipo);
+								switch(tipo){
 									case 1:
 										/*Etiqueta que abierta*/
 										//En una etiqueta abierta comprobaremos que los atributos estan correctamente puestos
 										atributos = detectarAtributos(linea);
-										abiertas.add(añadirEtiquetaAbierta(linea,atributos));
+										abiertas.add(aï¿½adirEtiquetaAbierta(linea,atributos));
 										break;
 									case 2:
 										/*Etiqueta que cierra*/
 										//en una etiqueta cerrada no necesitamos comprobar nada
-										cerradas.add(añadirEtiquetaCerrada(linea));
+										cerradas.add(aï¿½adirEtiquetaCerrada(linea));
 										break;
 									case 3:
 										/*Etiqueta abierta y cerrada*/
@@ -81,7 +82,12 @@ public class ValidarxmlAPP {
 										break;
 									}
 								}
+								sc.close();
 							}
+						
+						if(contadorabiertas != contadorcerradas){
+							System.out.println("Tienes etiquetas mal formadas");
+						}
 				
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
@@ -101,7 +107,7 @@ public class ValidarxmlAPP {
 	    
 	    System.out.println("\n Si no encuentra el error en este validador de XML puede que tenga una sintaxis incorrecta"+
 	    					"\n Por cada linea debe haber una etiqueta o par de etiquetas"+
-	    					"\n ¡Le animo a que lo ajuste y intente pasarlo de nuevo!");
+	    					"\n ï¿½Le animo a que lo ajuste y intente pasarlo de nuevo!");
 	}
 
 
@@ -121,7 +127,7 @@ public class ValidarxmlAPP {
 	}
 
 
-	private static String añadirEtiquetaCerrada(String linea) {
+	private static String aï¿½adirEtiquetaCerrada(String linea) {
 		
 		int a = linea.indexOf("</")+2;
 		int b = linea.indexOf(">");
@@ -133,7 +139,7 @@ public class ValidarxmlAPP {
 	}
 
 
-	private static String añadirEtiquetaAbierta(String linea, boolean atributos) {
+	private static String aï¿½adirEtiquetaAbierta(String linea, boolean atributos) {
 		int e = linea.indexOf(" ");
 		int a = linea.indexOf("<")+1;
 		int b = linea.indexOf(">");

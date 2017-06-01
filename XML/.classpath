@@ -7,5 +7,10 @@
 	<classpathentry kind="lib" path="C:/Users/Migue/Desktop/jdom-2.0.6-javadoc.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Migue/Desktop/jdom-2.0.6-junit.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Migue/Desktop/jdom-2.0.6-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Migue/Desktop/proyecto/Validador-xml/Librerias externas/jdom-2.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Migue/Desktop/proyecto/Validador-xml/Librerias externas/jdom-2.0.6-contrib.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Migue/Desktop/proyecto/Validador-xml/Librerias externas/jdom-2.0.6-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Migue/Desktop/proyecto/Validador-xml/Librerias externas/jdom-2.0.6-junit.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Migue/Desktop/proyecto/Validador-xml/Librerias externas/jdom-2.0.6-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
